@@ -5,8 +5,8 @@ export interface InputProps {
   value: string;
   type: "text" | "number";
   name: string;
-  required: boolean;
-  requiredText: string;
+  required?: boolean;
+  requiredText?: string;
 }
 export type TChild = { children: React.ReactNode };
 

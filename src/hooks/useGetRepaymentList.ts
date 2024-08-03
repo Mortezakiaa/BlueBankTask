@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function useGetRepaymentList() {
   const { data, isSuccess, isLoading, error } = useQuery({
-    queryKey: ["lists"],
+    queryKey: ["repaymentList"],
     queryFn: async () => {
       const res = await axios.get("http://localhost:5000/data");
       return res.data;
