@@ -1,12 +1,10 @@
-import { ChangeEvent } from "react";
 export interface InputProps {
-  onchange: (e: ChangeEvent<HTMLInputElement>) => void;
   title: string;
-  value: string;
+  value: string | number;
   type: "text" | "number";
   name: string;
   required?: boolean;
-  requiredText?: string;
+  error: boolean;
 }
 export type TChild = { children: React.ReactNode };
 
@@ -20,9 +18,16 @@ export interface TFacilities {
   interestRate: number;
   penaltyRate: number;
 }
-
 export interface ButtonProps {
   text: string;
-  onclick: () => void;
+  type: "submit" | "button";
+  onclick?: () => void;
   mode: "default" | "prev";
+}
+export interface TPersonDetails {
+  firstName: string;
+  lastName: string;
+  meliCode: null | number;
+  birthday: string;
+  phoneNumber: null | number;
 }

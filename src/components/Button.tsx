@@ -1,9 +1,9 @@
 import { ButtonProps } from "@/types/Types";
 
-const Button: React.FC<ButtonProps> = ({ text, mode, onclick }) => {
+const Button: React.FC<ButtonProps> = ({ text, type, mode, onclick }) => {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onclick}
       className={`
         ${

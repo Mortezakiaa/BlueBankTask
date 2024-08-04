@@ -23,10 +23,6 @@ body {
   z-index: -1;
 }
 
-.origin-0 {
-  transform-origin: 0%;
-}
-
 input:focus ~ label,
 input:not(:placeholder-shown) ~ label,
 textarea:focus ~ label,
@@ -52,5 +48,5 @@ select:focus ~ label {
   /* @apply text-black; left-0; */
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
-  right: 0;
+  right: 0 !important;
 }
