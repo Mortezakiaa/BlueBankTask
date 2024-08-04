@@ -15,6 +15,7 @@ export default function ChooseLoanType() {
         <div key={i.id}>{i.name}</div>
       ))}
       <Button
+        type="button"
         mode="default"
         onclick={() => {
           nextStep("/addPersonDetails");

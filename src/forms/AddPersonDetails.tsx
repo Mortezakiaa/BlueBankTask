@@ -20,6 +20,7 @@ export default function AddPersonDetails() {
 
   const submit = (data: TPersonDetails) => {
     console.log(data);
+    nextStep("/addBankInfo");
   };
 
   return (

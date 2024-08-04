@@ -28,3 +28,8 @@ export interface TPersonDetails {
   birthday: string;
   phoneNumber: null | number;
 }
+export interface TBankInfo {
+  shomareHesab: number;
+  shomareShaba: number;
+  mianginRiali: number;
+}
