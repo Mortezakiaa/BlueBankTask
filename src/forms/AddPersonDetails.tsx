@@ -15,7 +15,7 @@ export default function AddPersonDetails() {
   const { handleSubmit, control } = useForm<TPersonDetails>();
 
   const submit = (data: TPersonDetails) => {
-    console.log(data); 
+    console.log(data);
   };
 
   return (
@@ -24,39 +24,31 @@ export default function AddPersonDetails() {
         name="firstName"
         rules={{ required: "نام الزامی میباشد" }}
         control={control}
-        render={({ field }) => <Input title="نام" type="text" {...field} />}
+        render={({ field }) => <Input title="نام" {...field} />}
       />
       <Controller
         name="lastName"
         rules={{ required: "نام خانوادگی الزامی میباشد" }}
         control={control}
-        render={({ field }) => (
-          <Input title="نام خانوادگی" type="text" {...field} />
-        )}
+        render={({ field }) => <Input title="نام خانوادگی" {...field} />}
       />
       <Controller
         name="meliCode"
         rules={{ required: "کد ملی الزامی میباشد" }}
         control={control}
-        render={({ field }) => (
-          <Input title="کد ملی" type="number" {...field} />
-        )}
+        render={({ field }) => <Input title="کد ملی" {...field} />}
       />
       <Controller
         name="birthday"
         rules={{ required: "تاریخ تولد الزامی میباشد" }}
         control={control}
-        render={({ field }) => (
-          <Input title="تاریخ تولد" type="text" {...field} />
-        )}
+        render={({ field }) => <Input title="تاریخ تولد" {...field} />}
       />
       <Controller
         name="phoneNumber"
         rules={{ required: "شماره تماس الزامی میباشد" }}
         control={control}
-        render={({ field }) => (
-          <Input title="شماره تماس" type="number" {...field} />
-        )}
+        render={({ field }) => <Input title="شماره تماس" {...field} />}
       />
       <div className="flex items-center gap-4">
         <Button type="submit" mode="default" text="ثبت و مرحله بعد" />
