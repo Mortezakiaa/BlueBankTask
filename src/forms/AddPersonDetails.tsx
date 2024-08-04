@@ -15,7 +15,7 @@ export default function AddPersonDetails() {
   const { handleSubmit, control } = useForm<TPersonDetails>();
 
   const submit = (data: TPersonDetails) => {
-    console.log(data);
+    console.log(data); 
   };
 
   return (
