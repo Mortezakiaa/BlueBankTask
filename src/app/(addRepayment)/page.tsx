@@ -1,5 +1,5 @@
-import AddRepayment from "@/forms/AddRepayment";
+import ChooseLoanType from "@/forms/ChooseLoanType";
 
 export default function Home() {
-  return <AddRepayment />;
+  return <ChooseLoanType />;
 }

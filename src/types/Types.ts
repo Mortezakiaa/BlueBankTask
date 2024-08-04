@@ -20,3 +20,9 @@ export interface TFacilities {
   interestRate: number;
   penaltyRate: number;
 }
+
+export interface ButtonProps {
+  text: string;
+  onclick: () => void;
+  mode: "default" | "prev";
+}

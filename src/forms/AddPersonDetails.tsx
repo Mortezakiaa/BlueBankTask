@@ -3,7 +3,7 @@
 import Input from "@/components/Input";
 import useGetRepaymentList from "@/hooks/useGetRepaymentList";
 
-export default function AddRepayment() {
+export default function AddPersonDetails() {
   const { data, error, isLoading, isSuccess } = useGetRepaymentList();
 
   return (
