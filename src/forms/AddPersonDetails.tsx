@@ -12,7 +12,11 @@ export default function AddPersonDetails() {
   const { data, error, isLoading, isSuccess } = useGetRepaymentList();
   const { nextStep, prevStep } = useStepNavigate();
 
-  const { handleSubmit, control } = useForm<TPersonDetails>();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<TPersonDetails>();
 
   const submit = (data: TPersonDetails) => {
     console.log(data);
@@ -24,31 +28,84 @@ export default function AddPersonDetails() {
         name="firstName"
         rules={{ required: "نام الزامی میباشد" }}
         control={control}
-        render={({ field }) => <Input title="نام" {...field} />}
+        render={({ field }) => (
+          <Input
+            type="text"
+            title="نام"
+            {...field}
+            error={errors.firstName?.message}
+          />
+        )}
       />
       <Controller
         name="lastName"
         rules={{ required: "نام خانوادگی الزامی میباشد" }}
         control={control}
-        render={({ field }) => <Input title="نام خانوادگی" {...field} />}
+        render={({ field }) => (
+          <Input
+            type="text"
+            title="نام خانوادگی"
+            {...field}
+            error={errors.lastName?.message}
+          />
+        )}
       />
       <Controller
         name="meliCode"
-        rules={{ required: "کد ملی الزامی میباشد" }}
+        rules={{
+          required: "کد ملی الزامی میباشد",
+          validate: (value) => {
+            return (
+              [/^\d{10}$/].every((pattern) =>
+                pattern.test(value!.toString())
+              ) || "کد ملی صحیح نیست"
+            );
+          },
+        }}
         control={control}
-        render={({ field }) => <Input title="کد ملی" {...field} />}
+        render={({ field }) => (
+          <Input
+            type="number"
+            title="کد ملی"
+            {...field}
+            error={errors.meliCode?.message}
+          />
+        )}
       />
       <Controller
         name="birthday"
         rules={{ required: "تاریخ تولد الزامی میباشد" }}
         control={control}
-        render={({ field }) => <Input title="تاریخ تولد" {...field} />}
+        render={({ field }) => (
+          <Input
+            type="text"
+            title="تاریخ تولد"
+            {...field}
+            error={errors.birthday?.message}
+          />
+        )}
       />
       <Controller
         name="phoneNumber"
-        rules={{ required: "شماره تماس الزامی میباشد" }}
+        rules={{
+          required: "شماره تماس الزامی میباشد",
+          validate: (value) => {
+            return (
+              [/^0\d{10}$/].every((pattern) =>
+                pattern.test(value!.toString())
+              ) || "شماره تماس صحیح نیست"
+            );
+          },
+        }}
         control={control}
-        render={({ field }) => <Input title="شماره تماس" {...field} />}
+        render={({ field }) => (
+          <Input
+            type="number"
+            title="شماره تماس"
+            {...field}
+            error={errors.phoneNumber?.message}
+          />
+        )}
       />
       <div className="flex items-center gap-4">
         <Button type="submit" mode="default" text="ثبت و مرحله بعد" />

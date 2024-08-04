@@ -1,6 +1,7 @@
 export interface InputProps {
+  type: "number" | "text";
   title: string;
-  error: boolean;
+  error: string;
 }
 export type TChild = { children: React.ReactNode };
 
