@@ -1,44 +1,80 @@
-export default function Table() {
+import { TFacilities } from "@/types/Types";
+import { sp } from "@/utils/seperateNumber";
+
+export default function Table({ data }: { data: TFacilities[] }) {
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto">
         <div className="p-1.5 w-full inline-block align-middle">
-          <div className="overflow-hidden border rounded-lg">
+          <div className="overflow-x-scroll border rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                    className="px-4 py-2 text-xs font-bold text-right text-gray-500 uppercase "
                   >
                     ردیف
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                    className="px-4 py-2 text-xs font-bold text-right text-gray-500 uppercase "
                   >
-                    ID
+                    نوع تسهیلات
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                    className="px-4 py-2 text-xs font-bold text-right text-gray-500 uppercase "
                   >
-                    ID
+                    نرخ بهره
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-4 py-2 text-xs font-bold text-right text-gray-500 uppercase "
+                  >
+                    نرخ جریمه
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-4 py-2 text-xs font-bold text-right text-gray-500 uppercase "
+                  >
+                    مقدار
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-4 py-2 text-xs font-bold text-right text-gray-500 uppercase "
+                  >
+                    نوع بازپرداخت
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                    1
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                    Jone Doe
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                    jonne62@gmail.com
-                  </td>
-                </tr>
+                {data?.map((i: TFacilities) => (
+                  <tr>
+                    <td className="px-4 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
+                      {i.id}
+                    </td>
+                    <td className="px-4 py-2 text-sm text-gray-800 whitespace-nowrap">
+                      {i.name}
+                    </td>
+                    <td className="px-4 py-2 text-sm text-gray-800 whitespace-nowrap">
+                      {i.interestRate} درصد
+                    </td>
+                    <td className="px-4 py-2 text-sm text-gray-800 whitespace-nowrap">
+                      {i.penaltyRate} درصد
+                    </td>
+                    <td className="px-4 py-2 text-sm text-gray-800 whitespace-nowrap">
+                      {sp(i.amount)}
+                    </td>
+                    <td className="px-4 py-2 text-sm text-gray-800 whitespace-nowrap">
+                      <div className="flex flex-col gap-1">
+                        {i.repaymentType?.map((item) => (
+                          <span>{item.name}</span>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
