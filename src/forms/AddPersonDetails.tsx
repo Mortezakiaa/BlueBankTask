@@ -4,13 +4,13 @@ import Button from "@/components/Button";
 import FormLayout from "@/components/FormLayout";
 import Input from "@/components/Input";
 import useGetRepaymentList from "@/hooks/useGetRepaymentList";
-import useStepNavigate from "@/hooks/useStepNavigate";
+import useNavigateSteps from "@/hooks/useNavigateSteps";
 import { TPersonDetails } from "@/types/Types";
 import { useForm, Controller } from "react-hook-form";
 
 export default function AddPersonDetails() {
   const { data, error, isLoading, isSuccess } = useGetRepaymentList();
-  const { nextStep, prevStep } = useStepNavigate();
+  const { nextStep, prevStep } = useNavigateSteps();
 
   const {
     handleSubmit,

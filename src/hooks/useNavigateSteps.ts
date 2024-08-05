@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 
-export default function useStepNavigate() {
+export default function useNavigateSteps() {
   const router = useRouter();
 
   const nextStep = (step: string) => {
@@ -11,5 +11,9 @@ export default function useStepNavigate() {
     router.back();
   };
 
-  return { nextStep, prevStep };
+  const replaceStep = (step: string) => {
+    router.replace(step);
+  };
+
+  return { nextStep, prevStep, replaceStep };
 }

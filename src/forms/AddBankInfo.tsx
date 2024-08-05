@@ -3,12 +3,12 @@
 import Button from "@/components/Button";
 import FormLayout from "@/components/FormLayout";
 import Input from "@/components/Input";
-import useStepNavigate from "@/hooks/useStepNavigate";
+import useNavigateSteps from "@/hooks/useNavigateSteps";
 import { TBankInfo } from "@/types/Types";
 import { useForm, Controller } from "react-hook-form";
 
 export default function AddBankInfo() {
-  const { nextStep, prevStep } = useStepNavigate();
+  const { nextStep, prevStep } = useNavigateSteps();
 
   const {
     control,

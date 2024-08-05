@@ -3,11 +3,14 @@
 import Button from "@/components/Button";
 import FormLayout from "@/components/FormLayout";
 import useGetRepaymentList from "@/hooks/useGetRepaymentList";
+import useNavigateSteps from "@/hooks/useNavigateSteps";
 import { Details, TFacilities } from "@/types/Types";
 import { Controller, useForm } from "react-hook-form";
 
 export default function AddOtherDetails() {
   const { data, error, isLoading, isSuccess } = useGetRepaymentList();
+  const { replaceStep } = useNavigateSteps();
+
   const {
     control,
     handleSubmit,
@@ -18,6 +21,7 @@ export default function AddOtherDetails() {
 
   const sendData = (data: Details) => {
     console.log(data);
+    replaceStep("/repaymentList");
   };
 
   return (

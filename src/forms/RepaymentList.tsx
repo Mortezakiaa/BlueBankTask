@@ -1,10 +1,10 @@
 "use client";
 
+import Table from "@/components/Table";
 import useGetRepaymentList from "@/hooks/useGetRepaymentList";
 
 export default function RepaymentList() {
   const { data, error, isLoading, isSuccess } = useGetRepaymentList();
-    console.log(data);
-    
-  return <div></div>;
+
+  return <Table />;
 }
