@@ -25,12 +25,16 @@ export default function AddBankInfo() {
       <Controller
         control={control}
         name="shomareHesab"
-        rules={{ required: "َشماره حساب الزامی میباشد" }}
+        rules={{
+          required: "َشماره حساب الزامی میباشد",
+          minLength: { value: 12, message: "حداقل باید 12 رقمی باشد" },
+          maxLength: { value: 16, message: "حداکثر باید 16 رقمی باشد" },
+        }}
         render={({ field }) => (
           <Input
             {...field}
             title="شماره حساب"
-            type="text"
+            type="number"
             error={errors.shomareHesab?.message}
           />
         )}
@@ -38,12 +42,22 @@ export default function AddBankInfo() {
       <Controller
         control={control}
         name="shomareShaba"
-        rules={{ required: "شماره شبا الزامی میباشد" }}
+        rules={{
+          required: "شماره شبا الزامی میباشد",
+          minLength: {
+            value: 16,
+            message: "حداقل باید 16 رقمی باشد",
+          },
+          maxLength: {
+            value: 24,
+            message: "حداکثر باید 24 رقمی باشد",
+          },
+        }}
         render={({ field }) => (
           <Input
             {...field}
             title="شماره شبا"
-            type="text"
+            type="number"
             error={errors.shomareShaba?.message}
           />
         )}

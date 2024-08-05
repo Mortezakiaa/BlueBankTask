@@ -1,6 +1,6 @@
 import { TChild } from "@/types/Types";
 
-type T = TChild & { onSubmit: (e: any) => void };
+type T = TChild & { onSubmit?: (e: any) => void };
 
 export default function FormLayout({ children, onSubmit }: T) {
   return (

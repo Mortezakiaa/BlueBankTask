@@ -33,8 +33,12 @@ export interface TBankInfo {
   shomareShaba: number;
   mianginRiali: number;
 }
-
 export interface TSelectProps {
   title: string;
   data: TRepaymentType[];
 }
+
+export type Details = {
+  loanType: string;
+  repaymentType: string;
+};
