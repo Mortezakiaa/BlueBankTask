@@ -3,13 +3,16 @@
 import Button from "@/components/Button";
 import FormLayout from "@/components/FormLayout";
 import Input from "@/components/Input";
-import useGetRepaymentList from "@/hooks/useGetRepaymentList";
 import useNavigateSteps from "@/hooks/useNavigateSteps";
 import { TPersonDetails } from "@/types/Types";
 import { useForm, Controller } from "react-hook-form";
+import {
+  dateFormatValidate,
+  meliCodeFormatValidate,
+  phoneNumberFormatValidate,
+} from "@/utils/FormatValidation";
 
 export default function AddPersonDetails() {
-  const { data, error, isLoading, isSuccess } = useGetRepaymentList();
   const { nextStep, prevStep } = useNavigateSteps();
 
   const {
@@ -56,11 +59,7 @@ export default function AddPersonDetails() {
         rules={{
           required: "کد ملی الزامی میباشد",
           validate: (value) => {
-            return (
-              [/^\d{10}$/].every((pattern) =>
-                pattern.test(value!.toString())
-              ) || "کد ملی صحیح نیست"
-            );
+            return meliCodeFormatValidate(value!.toString());
           },
         }}
         control={control}
@@ -75,7 +74,12 @@ export default function AddPersonDetails() {
       />
       <Controller
         name="birthday"
-        rules={{ required: "تاریخ تولد الزامی میباشد" }}
+        rules={{
+          required: "تاریخ تولد الزامی میباشد",
+          validate: (value) => {
+            return dateFormatValidate(value!.toString());
+          },
+        }}
         control={control}
         render={({ field }) => (
           <Input
@@ -91,11 +95,7 @@ export default function AddPersonDetails() {
         rules={{
           required: "شماره تماس الزامی میباشد",
           validate: (value) => {
-            return (
-              [/^0\d{10}$/].every((pattern) =>
-                pattern.test(value!.toString())
-              ) || "شماره تماس صحیح نیست"
-            );
+            return phoneNumberFormatValidate(value!.toString());
           },
         }}
         control={control}

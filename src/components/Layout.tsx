@@ -5,13 +5,7 @@ import { TChild } from "@/types/Types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function Layout({ children }: TChild) {
-  const client = new QueryClient({
-    defaultOptions: {
-      queries: {
-        gcTime: 50000,
-      },
-    },
-  });
+  const client = new QueryClient();
   return (
     <QueryClientProvider client={client}>
       <Header />

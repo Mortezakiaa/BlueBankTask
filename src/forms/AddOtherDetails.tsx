@@ -2,13 +2,15 @@
 
 import Button from "@/components/Button";
 import FormLayout from "@/components/FormLayout";
+import SpinnerLoader from "@/components/SpinnerLoader";
 import useGetRepaymentList from "@/hooks/useGetRepaymentList";
 import useNavigateSteps from "@/hooks/useNavigateSteps";
 import { Details, TFacilities } from "@/types/Types";
 import { Controller, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export default function AddOtherDetails() {
-  const { data, error, isLoading, isSuccess } = useGetRepaymentList();
+  const { data, error, isLoading } = useGetRepaymentList();
   const { replaceStep } = useNavigateSteps();
 
   const {
@@ -21,9 +23,13 @@ export default function AddOtherDetails() {
 
   const sendData = (data: Details) => {
     console.log(data);
+    toast.success("عملیات با موفقیت انجام شد");
     replaceStep("/repaymentList");
   };
 
+  if (isLoading) return <SpinnerLoader />;
+  if (error) return toast.error(error.message);
+  
   return (
     <FormLayout onSubmit={handleSubmit(sendData)}>
       <Controller

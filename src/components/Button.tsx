@@ -1,6 +1,6 @@
 import { ButtonProps } from "@/types/Types";
 
-const Button: React.FC<ButtonProps> = ({ text, type, mode, onclick }) => {
+export default function Button({ text, type, mode, onclick }: ButtonProps) {
   return (
     <button
       type={type}
@@ -19,6 +19,4 @@ const Button: React.FC<ButtonProps> = ({ text, type, mode, onclick }) => {
       {text}
     </button>
   );
-};
-
-export default Button;
+}

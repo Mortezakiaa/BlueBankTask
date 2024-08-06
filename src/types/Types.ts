@@ -1,7 +1,7 @@
 export interface InputProps {
   type: "number" | "text";
   title: string;
-  error: string;
+  error: string | undefined;
 }
 export type TChild = { children: React.ReactNode };
 

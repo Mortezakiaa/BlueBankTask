@@ -1,7 +1,7 @@
 import { TFacilities } from "@/types/Types";
 import { sp } from "@/utils/seperateNumber";
 
-export default function Table({ data }: { data: TFacilities[] }) {
+export default function RepaymentTable({ data }: { data: TFacilities[] }) {
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto">

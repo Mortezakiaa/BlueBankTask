@@ -1,11 +1,6 @@
 import { InputProps } from "@/types/Types";
 
-const Input: React.FC<Partial<InputProps>> = ({
-  title,
-  type,
-  error,
-  ...rest
-}) => {
+export default function Input({ title, type, error, ...rest }: InputProps) {
   return (
     <div className="relative z-0 w-full mb-5">
       <input
@@ -20,5 +15,4 @@ const Input: React.FC<Partial<InputProps>> = ({
       {error && <span className="text-sm text-red-600">{error}</span>}
     </div>
   );
-};
-export default Input;
+}
