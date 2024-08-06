@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button";
 import FormLayout from "@/components/FormLayout";
+import Select from "@/components/Select";
 import SpinnerLoader from "@/components/SpinnerLoader";
 import useGetRepaymentList from "@/hooks/useGetRepaymentList";
 import useNavigateSteps from "@/hooks/useNavigateSteps";
@@ -29,7 +30,7 @@ export default function AddOtherDetails() {
 
   if (isLoading) return <SpinnerLoader />;
   if (error) return toast.error(error.message);
-  
+
   return (
     <FormLayout onSubmit={handleSubmit(sendData)}>
       <Controller
@@ -37,29 +38,11 @@ export default function AddOtherDetails() {
         control={control}
         rules={{ required: "نوع وام باید انتخاب شود" }}
         render={({ field }) => (
-          <div>
-            <label
-              htmlFor="loan"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              نوع وام
-            </label>
-            <select
-              {...field}
-              id="loan"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option value=""></option>
-              {data?.map((i: TFacilities) => (
-                <option value={i.id}>{i.name}</option>
-              ))}
-            </select>
-            {errors && (
-              <span className="text-sm text-red-600">
-                {errors.loanType?.message}
-              </span>
-            )}
-          </div>
+          <Select error={errors.loanType?.message} title="نوع وام" {...field}>
+            {data?.map((i: TFacilities) => (
+              <option value={i.id}>{i.name}</option>
+            ))}
+          </Select>
         )}
       />
       <Controller
@@ -67,33 +50,19 @@ export default function AddOtherDetails() {
         control={control}
         rules={{ required: "نوع باز پرداخت باید انتخاب شود" }}
         render={({ field }) => (
-          <div>
-            <label
-              htmlFor="repayment"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              نوع بازپرداخت
-            </label>
-            <select
-              {...field}
-              id="repayment"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option value=""></option>
-              {data?.map((i: TFacilities) => {
-                if (i.id === loanType) {
-                  return i.repaymentType?.map((i) => (
-                    <option value={i.value}>{i.name}</option>
-                  ));
-                }
-              })}
-            </select>
-            {errors && (
-              <span className="text-sm text-red-600">
-                {errors.repaymentType?.message}
-              </span>
-            )}
-          </div>
+          <Select
+            title="نوع بازپرداخت"
+            error={errors.repaymentType?.message}
+            {...field}
+          >
+            {data?.map((i: TFacilities) => {
+              if (i.id === loanType) {
+                return i.repaymentType?.map((i) => (
+                  <option value={i.value}>{i.name}</option>
+                ));
+              }
+            })}
+          </Select>
         )}
       />
 

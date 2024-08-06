@@ -42,3 +42,9 @@ export type Details = {
   loanType: string;
   repaymentType: string;
 };
+
+export type SelectProps = {
+  error: string | undefined;
+  title: string;
+  children: React.ReactNode;
+};
