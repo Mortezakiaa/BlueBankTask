@@ -7,14 +7,16 @@ export default function useGetRepaymentList() {
     queryFn: async () => {
       try {
         const res = await axios.get("http://localhost:5000/data");
+        console.log("res", res);
         return res.data;
       } catch (error) {
         if (error instanceof AxiosError)
-          return { error: true, message: error.response?.data };
+          return { error: true, message: error.message };
         return error;
       }
     },
     staleTime: 50000,
+    throwOnError: true,
   });
   return { data, isSuccess, isLoading, error };
 }

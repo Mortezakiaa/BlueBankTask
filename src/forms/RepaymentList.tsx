@@ -6,9 +6,9 @@ import useGetRepaymentList from "@/hooks/useGetRepaymentList";
 import toast from "react-hot-toast";
 
 export default function RepaymentList() {
-  const { data, error, isLoading } = useGetRepaymentList();
+  const { data, isLoading } = useGetRepaymentList();
 
   if (isLoading) return <SpinnerLoader />;
-  if (error) return toast.error(error.message);
+  if (data?.error) return toast.error(data?.message);
   return <RepaymentTable data={data} />;
 }

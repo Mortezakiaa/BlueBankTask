@@ -11,7 +11,7 @@ import { Controller, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 export default function AddOtherDetails() {
-  const { data, error, isLoading } = useGetRepaymentList();
+  const { data, isLoading } = useGetRepaymentList();
   const { replaceStep } = useNavigateSteps();
 
   const {
@@ -29,7 +29,7 @@ export default function AddOtherDetails() {
   };
 
   if (isLoading) return <SpinnerLoader />;
-  if (error) return toast.error(error.message);
+  if (data?.error) return toast.error(data?.message);
 
   return (
     <FormLayout onSubmit={handleSubmit(sendData)}>
