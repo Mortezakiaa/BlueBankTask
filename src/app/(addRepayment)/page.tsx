@@ -1,5 +1,5 @@
-import ChooseLoanType from "@/forms/ChooseLoanType";
+import AddPersonDetails from "@/forms/AddPersonDetails";
 
-export default function Home() {
-  return <ChooseLoanType />;
+export default function page() {
+  return <AddPersonDetails />;
 }
